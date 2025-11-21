@@ -1,0 +1,1354 @@
+import type * as runtime from "@prisma/client/runtime/client";
+import type * as Prisma from "../internal/prismaNamespace";
+/**
+ * Model HabitTemplate
+ *
+ */
+export type HabitTemplateModel = runtime.Types.Result.DefaultSelection<Prisma.$HabitTemplatePayload>;
+export type AggregateHabitTemplate = {
+    _count: HabitTemplateCountAggregateOutputType | null;
+    _avg: HabitTemplateAvgAggregateOutputType | null;
+    _sum: HabitTemplateSumAggregateOutputType | null;
+    _min: HabitTemplateMinAggregateOutputType | null;
+    _max: HabitTemplateMaxAggregateOutputType | null;
+};
+export type HabitTemplateAvgAggregateOutputType = {
+    id: number | null;
+    userId: number | null;
+    defaultDurationMinutes: number | null;
+};
+export type HabitTemplateSumAggregateOutputType = {
+    id: number | null;
+    userId: number | null;
+    defaultDurationMinutes: number | null;
+};
+export type HabitTemplateMinAggregateOutputType = {
+    id: number | null;
+    userId: number | null;
+    name: string | null;
+    defaultDurationMinutes: number | null;
+    recommendedTimeOfDay: string | null;
+    category: string | null;
+    isActive: boolean | null;
+    createdAt: Date | null;
+    updatedAt: Date | null;
+};
+export type HabitTemplateMaxAggregateOutputType = {
+    id: number | null;
+    userId: number | null;
+    name: string | null;
+    defaultDurationMinutes: number | null;
+    recommendedTimeOfDay: string | null;
+    category: string | null;
+    isActive: boolean | null;
+    createdAt: Date | null;
+    updatedAt: Date | null;
+};
+export type HabitTemplateCountAggregateOutputType = {
+    id: number;
+    userId: number;
+    name: number;
+    defaultDurationMinutes: number;
+    recommendedTimeOfDay: number;
+    category: number;
+    isActive: number;
+    createdAt: number;
+    updatedAt: number;
+    _all: number;
+};
+export type HabitTemplateAvgAggregateInputType = {
+    id?: true;
+    userId?: true;
+    defaultDurationMinutes?: true;
+};
+export type HabitTemplateSumAggregateInputType = {
+    id?: true;
+    userId?: true;
+    defaultDurationMinutes?: true;
+};
+export type HabitTemplateMinAggregateInputType = {
+    id?: true;
+    userId?: true;
+    name?: true;
+    defaultDurationMinutes?: true;
+    recommendedTimeOfDay?: true;
+    category?: true;
+    isActive?: true;
+    createdAt?: true;
+    updatedAt?: true;
+};
+export type HabitTemplateMaxAggregateInputType = {
+    id?: true;
+    userId?: true;
+    name?: true;
+    defaultDurationMinutes?: true;
+    recommendedTimeOfDay?: true;
+    category?: true;
+    isActive?: true;
+    createdAt?: true;
+    updatedAt?: true;
+};
+export type HabitTemplateCountAggregateInputType = {
+    id?: true;
+    userId?: true;
+    name?: true;
+    defaultDurationMinutes?: true;
+    recommendedTimeOfDay?: true;
+    category?: true;
+    isActive?: true;
+    createdAt?: true;
+    updatedAt?: true;
+    _all?: true;
+};
+export type HabitTemplateAggregateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Filter which HabitTemplate to aggregate.
+     */
+    where?: Prisma.HabitTemplateWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of HabitTemplates to fetch.
+     */
+    orderBy?: Prisma.HabitTemplateOrderByWithRelationInput | Prisma.HabitTemplateOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the start position
+     */
+    cursor?: Prisma.HabitTemplateWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` HabitTemplates from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` HabitTemplates.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Count returned HabitTemplates
+    **/
+    _count?: true | HabitTemplateCountAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to average
+    **/
+    _avg?: HabitTemplateAvgAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to sum
+    **/
+    _sum?: HabitTemplateSumAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to find the minimum value
+    **/
+    _min?: HabitTemplateMinAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to find the maximum value
+    **/
+    _max?: HabitTemplateMaxAggregateInputType;
+};
+export type GetHabitTemplateAggregateType<T extends HabitTemplateAggregateArgs> = {
+    [P in keyof T & keyof AggregateHabitTemplate]: P extends '_count' | 'count' ? T[P] extends true ? number : Prisma.GetScalarType<T[P], AggregateHabitTemplate[P]> : Prisma.GetScalarType<T[P], AggregateHabitTemplate[P]>;
+};
+export type HabitTemplateGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.HabitTemplateWhereInput;
+    orderBy?: Prisma.HabitTemplateOrderByWithAggregationInput | Prisma.HabitTemplateOrderByWithAggregationInput[];
+    by: Prisma.HabitTemplateScalarFieldEnum[] | Prisma.HabitTemplateScalarFieldEnum;
+    having?: Prisma.HabitTemplateScalarWhereWithAggregatesInput;
+    take?: number;
+    skip?: number;
+    _count?: HabitTemplateCountAggregateInputType | true;
+    _avg?: HabitTemplateAvgAggregateInputType;
+    _sum?: HabitTemplateSumAggregateInputType;
+    _min?: HabitTemplateMinAggregateInputType;
+    _max?: HabitTemplateMaxAggregateInputType;
+};
+export type HabitTemplateGroupByOutputType = {
+    id: number;
+    userId: number;
+    name: string;
+    defaultDurationMinutes: number | null;
+    recommendedTimeOfDay: string | null;
+    category: string | null;
+    isActive: boolean;
+    createdAt: Date;
+    updatedAt: Date;
+    _count: HabitTemplateCountAggregateOutputType | null;
+    _avg: HabitTemplateAvgAggregateOutputType | null;
+    _sum: HabitTemplateSumAggregateOutputType | null;
+    _min: HabitTemplateMinAggregateOutputType | null;
+    _max: HabitTemplateMaxAggregateOutputType | null;
+};
+type GetHabitTemplateGroupByPayload<T extends HabitTemplateGroupByArgs> = Prisma.PrismaPromise<Array<Prisma.PickEnumerable<HabitTemplateGroupByOutputType, T['by']> & {
+    [P in ((keyof T) & (keyof HabitTemplateGroupByOutputType))]: P extends '_count' ? T[P] extends boolean ? number : Prisma.GetScalarType<T[P], HabitTemplateGroupByOutputType[P]> : Prisma.GetScalarType<T[P], HabitTemplateGroupByOutputType[P]>;
+}>>;
+export type HabitTemplateWhereInput = {
+    AND?: Prisma.HabitTemplateWhereInput | Prisma.HabitTemplateWhereInput[];
+    OR?: Prisma.HabitTemplateWhereInput[];
+    NOT?: Prisma.HabitTemplateWhereInput | Prisma.HabitTemplateWhereInput[];
+    id?: Prisma.IntFilter<"HabitTemplate"> | number;
+    userId?: Prisma.IntFilter<"HabitTemplate"> | number;
+    name?: Prisma.StringFilter<"HabitTemplate"> | string;
+    defaultDurationMinutes?: Prisma.IntNullableFilter<"HabitTemplate"> | number | null;
+    recommendedTimeOfDay?: Prisma.StringNullableFilter<"HabitTemplate"> | string | null;
+    category?: Prisma.StringNullableFilter<"HabitTemplate"> | string | null;
+    isActive?: Prisma.BoolFilter<"HabitTemplate"> | boolean;
+    createdAt?: Prisma.DateTimeFilter<"HabitTemplate"> | Date | string;
+    updatedAt?: Prisma.DateTimeFilter<"HabitTemplate"> | Date | string;
+    user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>;
+};
+export type HabitTemplateOrderByWithRelationInput = {
+    id?: Prisma.SortOrder;
+    userId?: Prisma.SortOrder;
+    name?: Prisma.SortOrder;
+    defaultDurationMinutes?: Prisma.SortOrderInput | Prisma.SortOrder;
+    recommendedTimeOfDay?: Prisma.SortOrderInput | Prisma.SortOrder;
+    category?: Prisma.SortOrderInput | Prisma.SortOrder;
+    isActive?: Prisma.SortOrder;
+    createdAt?: Prisma.SortOrder;
+    updatedAt?: Prisma.SortOrder;
+    user?: Prisma.UserOrderByWithRelationInput;
+};
+export type HabitTemplateWhereUniqueInput = Prisma.AtLeast<{
+    id?: number;
+    AND?: Prisma.HabitTemplateWhereInput | Prisma.HabitTemplateWhereInput[];
+    OR?: Prisma.HabitTemplateWhereInput[];
+    NOT?: Prisma.HabitTemplateWhereInput | Prisma.HabitTemplateWhereInput[];
+    userId?: Prisma.IntFilter<"HabitTemplate"> | number;
+    name?: Prisma.StringFilter<"HabitTemplate"> | string;
+    defaultDurationMinutes?: Prisma.IntNullableFilter<"HabitTemplate"> | number | null;
+    recommendedTimeOfDay?: Prisma.StringNullableFilter<"HabitTemplate"> | string | null;
+    category?: Prisma.StringNullableFilter<"HabitTemplate"> | string | null;
+    isActive?: Prisma.BoolFilter<"HabitTemplate"> | boolean;
+    createdAt?: Prisma.DateTimeFilter<"HabitTemplate"> | Date | string;
+    updatedAt?: Prisma.DateTimeFilter<"HabitTemplate"> | Date | string;
+    user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>;
+}, "id">;
+export type HabitTemplateOrderByWithAggregationInput = {
+    id?: Prisma.SortOrder;
+    userId?: Prisma.SortOrder;
+    name?: Prisma.SortOrder;
+    defaultDurationMinutes?: Prisma.SortOrderInput | Prisma.SortOrder;
+    recommendedTimeOfDay?: Prisma.SortOrderInput | Prisma.SortOrder;
+    category?: Prisma.SortOrderInput | Prisma.SortOrder;
+    isActive?: Prisma.SortOrder;
+    createdAt?: Prisma.SortOrder;
+    updatedAt?: Prisma.SortOrder;
+    _count?: Prisma.HabitTemplateCountOrderByAggregateInput;
+    _avg?: Prisma.HabitTemplateAvgOrderByAggregateInput;
+    _max?: Prisma.HabitTemplateMaxOrderByAggregateInput;
+    _min?: Prisma.HabitTemplateMinOrderByAggregateInput;
+    _sum?: Prisma.HabitTemplateSumOrderByAggregateInput;
+};
+export type HabitTemplateScalarWhereWithAggregatesInput = {
+    AND?: Prisma.HabitTemplateScalarWhereWithAggregatesInput | Prisma.HabitTemplateScalarWhereWithAggregatesInput[];
+    OR?: Prisma.HabitTemplateScalarWhereWithAggregatesInput[];
+    NOT?: Prisma.HabitTemplateScalarWhereWithAggregatesInput | Prisma.HabitTemplateScalarWhereWithAggregatesInput[];
+    id?: Prisma.IntWithAggregatesFilter<"HabitTemplate"> | number;
+    userId?: Prisma.IntWithAggregatesFilter<"HabitTemplate"> | number;
+    name?: Prisma.StringWithAggregatesFilter<"HabitTemplate"> | string;
+    defaultDurationMinutes?: Prisma.IntNullableWithAggregatesFilter<"HabitTemplate"> | number | null;
+    recommendedTimeOfDay?: Prisma.StringNullableWithAggregatesFilter<"HabitTemplate"> | string | null;
+    category?: Prisma.StringNullableWithAggregatesFilter<"HabitTemplate"> | string | null;
+    isActive?: Prisma.BoolWithAggregatesFilter<"HabitTemplate"> | boolean;
+    createdAt?: Prisma.DateTimeWithAggregatesFilter<"HabitTemplate"> | Date | string;
+    updatedAt?: Prisma.DateTimeWithAggregatesFilter<"HabitTemplate"> | Date | string;
+};
+export type HabitTemplateCreateInput = {
+    name: string;
+    defaultDurationMinutes?: number | null;
+    recommendedTimeOfDay?: string | null;
+    category?: string | null;
+    isActive?: boolean;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    user: Prisma.UserCreateNestedOneWithoutHabitTemplatesInput;
+};
+export type HabitTemplateUncheckedCreateInput = {
+    id?: number;
+    userId: number;
+    name: string;
+    defaultDurationMinutes?: number | null;
+    recommendedTimeOfDay?: string | null;
+    category?: string | null;
+    isActive?: boolean;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+};
+export type HabitTemplateUpdateInput = {
+    name?: Prisma.StringFieldUpdateOperationsInput | string;
+    defaultDurationMinutes?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
+    recommendedTimeOfDay?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    user?: Prisma.UserUpdateOneRequiredWithoutHabitTemplatesNestedInput;
+};
+export type HabitTemplateUncheckedUpdateInput = {
+    id?: Prisma.IntFieldUpdateOperationsInput | number;
+    userId?: Prisma.IntFieldUpdateOperationsInput | number;
+    name?: Prisma.StringFieldUpdateOperationsInput | string;
+    defaultDurationMinutes?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
+    recommendedTimeOfDay?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type HabitTemplateCreateManyInput = {
+    id?: number;
+    userId: number;
+    name: string;
+    defaultDurationMinutes?: number | null;
+    recommendedTimeOfDay?: string | null;
+    category?: string | null;
+    isActive?: boolean;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+};
+export type HabitTemplateUpdateManyMutationInput = {
+    name?: Prisma.StringFieldUpdateOperationsInput | string;
+    defaultDurationMinutes?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
+    recommendedTimeOfDay?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type HabitTemplateUncheckedUpdateManyInput = {
+    id?: Prisma.IntFieldUpdateOperationsInput | number;
+    userId?: Prisma.IntFieldUpdateOperationsInput | number;
+    name?: Prisma.StringFieldUpdateOperationsInput | string;
+    defaultDurationMinutes?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
+    recommendedTimeOfDay?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type HabitTemplateListRelationFilter = {
+    every?: Prisma.HabitTemplateWhereInput;
+    some?: Prisma.HabitTemplateWhereInput;
+    none?: Prisma.HabitTemplateWhereInput;
+};
+export type HabitTemplateOrderByRelationAggregateInput = {
+    _count?: Prisma.SortOrder;
+};
+export type HabitTemplateCountOrderByAggregateInput = {
+    id?: Prisma.SortOrder;
+    userId?: Prisma.SortOrder;
+    name?: Prisma.SortOrder;
+    defaultDurationMinutes?: Prisma.SortOrder;
+    recommendedTimeOfDay?: Prisma.SortOrder;
+    category?: Prisma.SortOrder;
+    isActive?: Prisma.SortOrder;
+    createdAt?: Prisma.SortOrder;
+    updatedAt?: Prisma.SortOrder;
+};
+export type HabitTemplateAvgOrderByAggregateInput = {
+    id?: Prisma.SortOrder;
+    userId?: Prisma.SortOrder;
+    defaultDurationMinutes?: Prisma.SortOrder;
+};
+export type HabitTemplateMaxOrderByAggregateInput = {
+    id?: Prisma.SortOrder;
+    userId?: Prisma.SortOrder;
+    name?: Prisma.SortOrder;
+    defaultDurationMinutes?: Prisma.SortOrder;
+    recommendedTimeOfDay?: Prisma.SortOrder;
+    category?: Prisma.SortOrder;
+    isActive?: Prisma.SortOrder;
+    createdAt?: Prisma.SortOrder;
+    updatedAt?: Prisma.SortOrder;
+};
+export type HabitTemplateMinOrderByAggregateInput = {
+    id?: Prisma.SortOrder;
+    userId?: Prisma.SortOrder;
+    name?: Prisma.SortOrder;
+    defaultDurationMinutes?: Prisma.SortOrder;
+    recommendedTimeOfDay?: Prisma.SortOrder;
+    category?: Prisma.SortOrder;
+    isActive?: Prisma.SortOrder;
+    createdAt?: Prisma.SortOrder;
+    updatedAt?: Prisma.SortOrder;
+};
+export type HabitTemplateSumOrderByAggregateInput = {
+    id?: Prisma.SortOrder;
+    userId?: Prisma.SortOrder;
+    defaultDurationMinutes?: Prisma.SortOrder;
+};
+export type HabitTemplateCreateNestedManyWithoutUserInput = {
+    create?: Prisma.XOR<Prisma.HabitTemplateCreateWithoutUserInput, Prisma.HabitTemplateUncheckedCreateWithoutUserInput> | Prisma.HabitTemplateCreateWithoutUserInput[] | Prisma.HabitTemplateUncheckedCreateWithoutUserInput[];
+    connectOrCreate?: Prisma.HabitTemplateCreateOrConnectWithoutUserInput | Prisma.HabitTemplateCreateOrConnectWithoutUserInput[];
+    createMany?: Prisma.HabitTemplateCreateManyUserInputEnvelope;
+    connect?: Prisma.HabitTemplateWhereUniqueInput | Prisma.HabitTemplateWhereUniqueInput[];
+};
+export type HabitTemplateUncheckedCreateNestedManyWithoutUserInput = {
+    create?: Prisma.XOR<Prisma.HabitTemplateCreateWithoutUserInput, Prisma.HabitTemplateUncheckedCreateWithoutUserInput> | Prisma.HabitTemplateCreateWithoutUserInput[] | Prisma.HabitTemplateUncheckedCreateWithoutUserInput[];
+    connectOrCreate?: Prisma.HabitTemplateCreateOrConnectWithoutUserInput | Prisma.HabitTemplateCreateOrConnectWithoutUserInput[];
+    createMany?: Prisma.HabitTemplateCreateManyUserInputEnvelope;
+    connect?: Prisma.HabitTemplateWhereUniqueInput | Prisma.HabitTemplateWhereUniqueInput[];
+};
+export type HabitTemplateUpdateManyWithoutUserNestedInput = {
+    create?: Prisma.XOR<Prisma.HabitTemplateCreateWithoutUserInput, Prisma.HabitTemplateUncheckedCreateWithoutUserInput> | Prisma.HabitTemplateCreateWithoutUserInput[] | Prisma.HabitTemplateUncheckedCreateWithoutUserInput[];
+    connectOrCreate?: Prisma.HabitTemplateCreateOrConnectWithoutUserInput | Prisma.HabitTemplateCreateOrConnectWithoutUserInput[];
+    upsert?: Prisma.HabitTemplateUpsertWithWhereUniqueWithoutUserInput | Prisma.HabitTemplateUpsertWithWhereUniqueWithoutUserInput[];
+    createMany?: Prisma.HabitTemplateCreateManyUserInputEnvelope;
+    set?: Prisma.HabitTemplateWhereUniqueInput | Prisma.HabitTemplateWhereUniqueInput[];
+    disconnect?: Prisma.HabitTemplateWhereUniqueInput | Prisma.HabitTemplateWhereUniqueInput[];
+    delete?: Prisma.HabitTemplateWhereUniqueInput | Prisma.HabitTemplateWhereUniqueInput[];
+    connect?: Prisma.HabitTemplateWhereUniqueInput | Prisma.HabitTemplateWhereUniqueInput[];
+    update?: Prisma.HabitTemplateUpdateWithWhereUniqueWithoutUserInput | Prisma.HabitTemplateUpdateWithWhereUniqueWithoutUserInput[];
+    updateMany?: Prisma.HabitTemplateUpdateManyWithWhereWithoutUserInput | Prisma.HabitTemplateUpdateManyWithWhereWithoutUserInput[];
+    deleteMany?: Prisma.HabitTemplateScalarWhereInput | Prisma.HabitTemplateScalarWhereInput[];
+};
+export type HabitTemplateUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: Prisma.XOR<Prisma.HabitTemplateCreateWithoutUserInput, Prisma.HabitTemplateUncheckedCreateWithoutUserInput> | Prisma.HabitTemplateCreateWithoutUserInput[] | Prisma.HabitTemplateUncheckedCreateWithoutUserInput[];
+    connectOrCreate?: Prisma.HabitTemplateCreateOrConnectWithoutUserInput | Prisma.HabitTemplateCreateOrConnectWithoutUserInput[];
+    upsert?: Prisma.HabitTemplateUpsertWithWhereUniqueWithoutUserInput | Prisma.HabitTemplateUpsertWithWhereUniqueWithoutUserInput[];
+    createMany?: Prisma.HabitTemplateCreateManyUserInputEnvelope;
+    set?: Prisma.HabitTemplateWhereUniqueInput | Prisma.HabitTemplateWhereUniqueInput[];
+    disconnect?: Prisma.HabitTemplateWhereUniqueInput | Prisma.HabitTemplateWhereUniqueInput[];
+    delete?: Prisma.HabitTemplateWhereUniqueInput | Prisma.HabitTemplateWhereUniqueInput[];
+    connect?: Prisma.HabitTemplateWhereUniqueInput | Prisma.HabitTemplateWhereUniqueInput[];
+    update?: Prisma.HabitTemplateUpdateWithWhereUniqueWithoutUserInput | Prisma.HabitTemplateUpdateWithWhereUniqueWithoutUserInput[];
+    updateMany?: Prisma.HabitTemplateUpdateManyWithWhereWithoutUserInput | Prisma.HabitTemplateUpdateManyWithWhereWithoutUserInput[];
+    deleteMany?: Prisma.HabitTemplateScalarWhereInput | Prisma.HabitTemplateScalarWhereInput[];
+};
+export type HabitTemplateCreateWithoutUserInput = {
+    name: string;
+    defaultDurationMinutes?: number | null;
+    recommendedTimeOfDay?: string | null;
+    category?: string | null;
+    isActive?: boolean;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+};
+export type HabitTemplateUncheckedCreateWithoutUserInput = {
+    id?: number;
+    name: string;
+    defaultDurationMinutes?: number | null;
+    recommendedTimeOfDay?: string | null;
+    category?: string | null;
+    isActive?: boolean;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+};
+export type HabitTemplateCreateOrConnectWithoutUserInput = {
+    where: Prisma.HabitTemplateWhereUniqueInput;
+    create: Prisma.XOR<Prisma.HabitTemplateCreateWithoutUserInput, Prisma.HabitTemplateUncheckedCreateWithoutUserInput>;
+};
+export type HabitTemplateCreateManyUserInputEnvelope = {
+    data: Prisma.HabitTemplateCreateManyUserInput | Prisma.HabitTemplateCreateManyUserInput[];
+};
+export type HabitTemplateUpsertWithWhereUniqueWithoutUserInput = {
+    where: Prisma.HabitTemplateWhereUniqueInput;
+    update: Prisma.XOR<Prisma.HabitTemplateUpdateWithoutUserInput, Prisma.HabitTemplateUncheckedUpdateWithoutUserInput>;
+    create: Prisma.XOR<Prisma.HabitTemplateCreateWithoutUserInput, Prisma.HabitTemplateUncheckedCreateWithoutUserInput>;
+};
+export type HabitTemplateUpdateWithWhereUniqueWithoutUserInput = {
+    where: Prisma.HabitTemplateWhereUniqueInput;
+    data: Prisma.XOR<Prisma.HabitTemplateUpdateWithoutUserInput, Prisma.HabitTemplateUncheckedUpdateWithoutUserInput>;
+};
+export type HabitTemplateUpdateManyWithWhereWithoutUserInput = {
+    where: Prisma.HabitTemplateScalarWhereInput;
+    data: Prisma.XOR<Prisma.HabitTemplateUpdateManyMutationInput, Prisma.HabitTemplateUncheckedUpdateManyWithoutUserInput>;
+};
+export type HabitTemplateScalarWhereInput = {
+    AND?: Prisma.HabitTemplateScalarWhereInput | Prisma.HabitTemplateScalarWhereInput[];
+    OR?: Prisma.HabitTemplateScalarWhereInput[];
+    NOT?: Prisma.HabitTemplateScalarWhereInput | Prisma.HabitTemplateScalarWhereInput[];
+    id?: Prisma.IntFilter<"HabitTemplate"> | number;
+    userId?: Prisma.IntFilter<"HabitTemplate"> | number;
+    name?: Prisma.StringFilter<"HabitTemplate"> | string;
+    defaultDurationMinutes?: Prisma.IntNullableFilter<"HabitTemplate"> | number | null;
+    recommendedTimeOfDay?: Prisma.StringNullableFilter<"HabitTemplate"> | string | null;
+    category?: Prisma.StringNullableFilter<"HabitTemplate"> | string | null;
+    isActive?: Prisma.BoolFilter<"HabitTemplate"> | boolean;
+    createdAt?: Prisma.DateTimeFilter<"HabitTemplate"> | Date | string;
+    updatedAt?: Prisma.DateTimeFilter<"HabitTemplate"> | Date | string;
+};
+export type HabitTemplateCreateManyUserInput = {
+    id?: number;
+    name: string;
+    defaultDurationMinutes?: number | null;
+    recommendedTimeOfDay?: string | null;
+    category?: string | null;
+    isActive?: boolean;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+};
+export type HabitTemplateUpdateWithoutUserInput = {
+    name?: Prisma.StringFieldUpdateOperationsInput | string;
+    defaultDurationMinutes?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
+    recommendedTimeOfDay?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type HabitTemplateUncheckedUpdateWithoutUserInput = {
+    id?: Prisma.IntFieldUpdateOperationsInput | number;
+    name?: Prisma.StringFieldUpdateOperationsInput | string;
+    defaultDurationMinutes?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
+    recommendedTimeOfDay?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type HabitTemplateUncheckedUpdateManyWithoutUserInput = {
+    id?: Prisma.IntFieldUpdateOperationsInput | number;
+    name?: Prisma.StringFieldUpdateOperationsInput | string;
+    defaultDurationMinutes?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
+    recommendedTimeOfDay?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type HabitTemplateSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+    id?: boolean;
+    userId?: boolean;
+    name?: boolean;
+    defaultDurationMinutes?: boolean;
+    recommendedTimeOfDay?: boolean;
+    category?: boolean;
+    isActive?: boolean;
+    createdAt?: boolean;
+    updatedAt?: boolean;
+    user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
+}, ExtArgs["result"]["habitTemplate"]>;
+export type HabitTemplateSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+    id?: boolean;
+    userId?: boolean;
+    name?: boolean;
+    defaultDurationMinutes?: boolean;
+    recommendedTimeOfDay?: boolean;
+    category?: boolean;
+    isActive?: boolean;
+    createdAt?: boolean;
+    updatedAt?: boolean;
+    user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
+}, ExtArgs["result"]["habitTemplate"]>;
+export type HabitTemplateSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+    id?: boolean;
+    userId?: boolean;
+    name?: boolean;
+    defaultDurationMinutes?: boolean;
+    recommendedTimeOfDay?: boolean;
+    category?: boolean;
+    isActive?: boolean;
+    createdAt?: boolean;
+    updatedAt?: boolean;
+    user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
+}, ExtArgs["result"]["habitTemplate"]>;
+export type HabitTemplateSelectScalar = {
+    id?: boolean;
+    userId?: boolean;
+    name?: boolean;
+    defaultDurationMinutes?: boolean;
+    recommendedTimeOfDay?: boolean;
+    category?: boolean;
+    isActive?: boolean;
+    createdAt?: boolean;
+    updatedAt?: boolean;
+};
+export type HabitTemplateOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "name" | "defaultDurationMinutes" | "recommendedTimeOfDay" | "category" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["habitTemplate"]>;
+export type HabitTemplateInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
+};
+export type HabitTemplateIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
+};
+export type HabitTemplateIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
+};
+export type $HabitTemplatePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    name: "HabitTemplate";
+    objects: {
+        user: Prisma.$UserPayload<ExtArgs>;
+    };
+    scalars: runtime.Types.Extensions.GetPayloadResult<{
+        id: number;
+        userId: number;
+        name: string;
+        defaultDurationMinutes: number | null;
+        recommendedTimeOfDay: string | null;
+        category: string | null;
+        isActive: boolean;
+        createdAt: Date;
+        updatedAt: Date;
+    }, ExtArgs["result"]["habitTemplate"]>;
+    composites: {};
+};
+export type HabitTemplateGetPayload<S extends boolean | null | undefined | HabitTemplateDefaultArgs> = runtime.Types.Result.GetResult<Prisma.$HabitTemplatePayload, S>;
+export type HabitTemplateCountArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = Omit<HabitTemplateFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+    select?: HabitTemplateCountAggregateInputType | true;
+};
+export interface HabitTemplateDelegate<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: {
+        types: Prisma.TypeMap<ExtArgs>['model']['HabitTemplate'];
+        meta: {
+            name: 'HabitTemplate';
+        };
+    };
+    /**
+     * Find zero or one HabitTemplate that matches the filter.
+     * @param {HabitTemplateFindUniqueArgs} args - Arguments to find a HabitTemplate
+     * @example
+     * // Get one HabitTemplate
+     * const habitTemplate = await prisma.habitTemplate.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends HabitTemplateFindUniqueArgs>(args: Prisma.SelectSubset<T, HabitTemplateFindUniqueArgs<ExtArgs>>): Prisma.Prisma__HabitTemplateClient<runtime.Types.Result.GetResult<Prisma.$HabitTemplatePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Find one HabitTemplate that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {HabitTemplateFindUniqueOrThrowArgs} args - Arguments to find a HabitTemplate
+     * @example
+     * // Get one HabitTemplate
+     * const habitTemplate = await prisma.habitTemplate.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends HabitTemplateFindUniqueOrThrowArgs>(args: Prisma.SelectSubset<T, HabitTemplateFindUniqueOrThrowArgs<ExtArgs>>): Prisma.Prisma__HabitTemplateClient<runtime.Types.Result.GetResult<Prisma.$HabitTemplatePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Find the first HabitTemplate that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HabitTemplateFindFirstArgs} args - Arguments to find a HabitTemplate
+     * @example
+     * // Get one HabitTemplate
+     * const habitTemplate = await prisma.habitTemplate.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends HabitTemplateFindFirstArgs>(args?: Prisma.SelectSubset<T, HabitTemplateFindFirstArgs<ExtArgs>>): Prisma.Prisma__HabitTemplateClient<runtime.Types.Result.GetResult<Prisma.$HabitTemplatePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Find the first HabitTemplate that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HabitTemplateFindFirstOrThrowArgs} args - Arguments to find a HabitTemplate
+     * @example
+     * // Get one HabitTemplate
+     * const habitTemplate = await prisma.habitTemplate.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends HabitTemplateFindFirstOrThrowArgs>(args?: Prisma.SelectSubset<T, HabitTemplateFindFirstOrThrowArgs<ExtArgs>>): Prisma.Prisma__HabitTemplateClient<runtime.Types.Result.GetResult<Prisma.$HabitTemplatePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Find zero or more HabitTemplates that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HabitTemplateFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all HabitTemplates
+     * const habitTemplates = await prisma.habitTemplate.findMany()
+     *
+     * // Get first 10 HabitTemplates
+     * const habitTemplates = await prisma.habitTemplate.findMany({ take: 10 })
+     *
+     * // Only select the `id`
+     * const habitTemplateWithIdOnly = await prisma.habitTemplate.findMany({ select: { id: true } })
+     *
+     */
+    findMany<T extends HabitTemplateFindManyArgs>(args?: Prisma.SelectSubset<T, HabitTemplateFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$HabitTemplatePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>;
+    /**
+     * Create a HabitTemplate.
+     * @param {HabitTemplateCreateArgs} args - Arguments to create a HabitTemplate.
+     * @example
+     * // Create one HabitTemplate
+     * const HabitTemplate = await prisma.habitTemplate.create({
+     *   data: {
+     *     // ... data to create a HabitTemplate
+     *   }
+     * })
+     *
+     */
+    create<T extends HabitTemplateCreateArgs>(args: Prisma.SelectSubset<T, HabitTemplateCreateArgs<ExtArgs>>): Prisma.Prisma__HabitTemplateClient<runtime.Types.Result.GetResult<Prisma.$HabitTemplatePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Create many HabitTemplates.
+     * @param {HabitTemplateCreateManyArgs} args - Arguments to create many HabitTemplates.
+     * @example
+     * // Create many HabitTemplates
+     * const habitTemplate = await prisma.habitTemplate.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     */
+    createMany<T extends HabitTemplateCreateManyArgs>(args?: Prisma.SelectSubset<T, HabitTemplateCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>;
+    /**
+     * Create many HabitTemplates and returns the data saved in the database.
+     * @param {HabitTemplateCreateManyAndReturnArgs} args - Arguments to create many HabitTemplates.
+     * @example
+     * // Create many HabitTemplates
+     * const habitTemplate = await prisma.habitTemplate.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     * // Create many HabitTemplates and only return the `id`
+     * const habitTemplateWithIdOnly = await prisma.habitTemplate.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     *
+     */
+    createManyAndReturn<T extends HabitTemplateCreateManyAndReturnArgs>(args?: Prisma.SelectSubset<T, HabitTemplateCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$HabitTemplatePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>;
+    /**
+     * Delete a HabitTemplate.
+     * @param {HabitTemplateDeleteArgs} args - Arguments to delete one HabitTemplate.
+     * @example
+     * // Delete one HabitTemplate
+     * const HabitTemplate = await prisma.habitTemplate.delete({
+     *   where: {
+     *     // ... filter to delete one HabitTemplate
+     *   }
+     * })
+     *
+     */
+    delete<T extends HabitTemplateDeleteArgs>(args: Prisma.SelectSubset<T, HabitTemplateDeleteArgs<ExtArgs>>): Prisma.Prisma__HabitTemplateClient<runtime.Types.Result.GetResult<Prisma.$HabitTemplatePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Update one HabitTemplate.
+     * @param {HabitTemplateUpdateArgs} args - Arguments to update one HabitTemplate.
+     * @example
+     * // Update one HabitTemplate
+     * const habitTemplate = await prisma.habitTemplate.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     *
+     */
+    update<T extends HabitTemplateUpdateArgs>(args: Prisma.SelectSubset<T, HabitTemplateUpdateArgs<ExtArgs>>): Prisma.Prisma__HabitTemplateClient<runtime.Types.Result.GetResult<Prisma.$HabitTemplatePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Delete zero or more HabitTemplates.
+     * @param {HabitTemplateDeleteManyArgs} args - Arguments to filter HabitTemplates to delete.
+     * @example
+     * // Delete a few HabitTemplates
+     * const { count } = await prisma.habitTemplate.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     *
+     */
+    deleteMany<T extends HabitTemplateDeleteManyArgs>(args?: Prisma.SelectSubset<T, HabitTemplateDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>;
+    /**
+     * Update zero or more HabitTemplates.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HabitTemplateUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many HabitTemplates
+     * const habitTemplate = await prisma.habitTemplate.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     *
+     */
+    updateMany<T extends HabitTemplateUpdateManyArgs>(args: Prisma.SelectSubset<T, HabitTemplateUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>;
+    /**
+     * Update zero or more HabitTemplates and returns the data updated in the database.
+     * @param {HabitTemplateUpdateManyAndReturnArgs} args - Arguments to update many HabitTemplates.
+     * @example
+     * // Update many HabitTemplates
+     * const habitTemplate = await prisma.habitTemplate.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     * // Update zero or more HabitTemplates and only return the `id`
+     * const habitTemplateWithIdOnly = await prisma.habitTemplate.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     *
+     */
+    updateManyAndReturn<T extends HabitTemplateUpdateManyAndReturnArgs>(args: Prisma.SelectSubset<T, HabitTemplateUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$HabitTemplatePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>;
+    /**
+     * Create or update one HabitTemplate.
+     * @param {HabitTemplateUpsertArgs} args - Arguments to update or create a HabitTemplate.
+     * @example
+     * // Update or create a HabitTemplate
+     * const habitTemplate = await prisma.habitTemplate.upsert({
+     *   create: {
+     *     // ... data to create a HabitTemplate
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the HabitTemplate we want to update
+     *   }
+     * })
+     */
+    upsert<T extends HabitTemplateUpsertArgs>(args: Prisma.SelectSubset<T, HabitTemplateUpsertArgs<ExtArgs>>): Prisma.Prisma__HabitTemplateClient<runtime.Types.Result.GetResult<Prisma.$HabitTemplatePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Count the number of HabitTemplates.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HabitTemplateCountArgs} args - Arguments to filter HabitTemplates to count.
+     * @example
+     * // Count the number of HabitTemplates
+     * const count = await prisma.habitTemplate.count({
+     *   where: {
+     *     // ... the filter for the HabitTemplates we want to count
+     *   }
+     * })
+    **/
+    count<T extends HabitTemplateCountArgs>(args?: Prisma.Subset<T, HabitTemplateCountArgs>): Prisma.PrismaPromise<T extends runtime.Types.Utils.Record<'select', any> ? T['select'] extends true ? number : Prisma.GetScalarType<T['select'], HabitTemplateCountAggregateOutputType> : number>;
+    /**
+     * Allows you to perform aggregations operations on a HabitTemplate.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HabitTemplateAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends HabitTemplateAggregateArgs>(args: Prisma.Subset<T, HabitTemplateAggregateArgs>): Prisma.PrismaPromise<GetHabitTemplateAggregateType<T>>;
+    /**
+     * Group by HabitTemplate.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HabitTemplateGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     *
+    **/
+    groupBy<T extends HabitTemplateGroupByArgs, HasSelectOrTake extends Prisma.Or<Prisma.Extends<'skip', Prisma.Keys<T>>, Prisma.Extends<'take', Prisma.Keys<T>>>, OrderByArg extends Prisma.True extends HasSelectOrTake ? {
+        orderBy: HabitTemplateGroupByArgs['orderBy'];
+    } : {
+        orderBy?: HabitTemplateGroupByArgs['orderBy'];
+    }, OrderFields extends Prisma.ExcludeUnderscoreKeys<Prisma.Keys<Prisma.MaybeTupleToUnion<T['orderBy']>>>, ByFields extends Prisma.MaybeTupleToUnion<T['by']>, ByValid extends Prisma.Has<ByFields, OrderFields>, HavingFields extends Prisma.GetHavingFields<T['having']>, HavingValid extends Prisma.Has<ByFields, HavingFields>, ByEmpty extends T['by'] extends never[] ? Prisma.True : Prisma.False, InputErrors extends ByEmpty extends Prisma.True ? `Error: "by" must not be empty.` : HavingValid extends Prisma.False ? {
+        [P in HavingFields]: P extends ByFields ? never : P extends string ? `Error: Field "${P}" used in "having" needs to be provided in "by".` : [
+            Error,
+            'Field ',
+            P,
+            ` in "having" needs to be provided in "by"`
+        ];
+    }[HavingFields] : 'take' extends Prisma.Keys<T> ? 'orderBy' extends Prisma.Keys<T> ? ByValid extends Prisma.True ? {} : {
+        [P in OrderFields]: P extends ByFields ? never : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+    }[OrderFields] : 'Error: If you provide "take", you also need to provide "orderBy"' : 'skip' extends Prisma.Keys<T> ? 'orderBy' extends Prisma.Keys<T> ? ByValid extends Prisma.True ? {} : {
+        [P in OrderFields]: P extends ByFields ? never : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+    }[OrderFields] : 'Error: If you provide "skip", you also need to provide "orderBy"' : ByValid extends Prisma.True ? {} : {
+        [P in OrderFields]: P extends ByFields ? never : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+    }[OrderFields]>(args: Prisma.SubsetIntersection<T, HabitTemplateGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetHabitTemplateGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>;
+    /**
+     * Fields of the HabitTemplate model
+     */
+    readonly fields: HabitTemplateFieldRefs;
+}
+/**
+ * The delegate class that acts as a "Promise-like" for HabitTemplate.
+ * Why is this prefixed with `Prisma__`?
+ * Because we want to prevent naming conflicts as mentioned in
+ * https://github.com/prisma/prisma-client-js/issues/707
+ */
+export interface Prisma__HabitTemplateClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise";
+    user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): runtime.Types.Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): runtime.Types.Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): runtime.Types.Utils.JsPromise<T>;
+}
+/**
+ * Fields of the HabitTemplate model
+ */
+export interface HabitTemplateFieldRefs {
+    readonly id: Prisma.FieldRef<"HabitTemplate", 'Int'>;
+    readonly userId: Prisma.FieldRef<"HabitTemplate", 'Int'>;
+    readonly name: Prisma.FieldRef<"HabitTemplate", 'String'>;
+    readonly defaultDurationMinutes: Prisma.FieldRef<"HabitTemplate", 'Int'>;
+    readonly recommendedTimeOfDay: Prisma.FieldRef<"HabitTemplate", 'String'>;
+    readonly category: Prisma.FieldRef<"HabitTemplate", 'String'>;
+    readonly isActive: Prisma.FieldRef<"HabitTemplate", 'Boolean'>;
+    readonly createdAt: Prisma.FieldRef<"HabitTemplate", 'DateTime'>;
+    readonly updatedAt: Prisma.FieldRef<"HabitTemplate", 'DateTime'>;
+}
+/**
+ * HabitTemplate findUnique
+ */
+export type HabitTemplateFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HabitTemplate
+     */
+    select?: Prisma.HabitTemplateSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the HabitTemplate
+     */
+    omit?: Prisma.HabitTemplateOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.HabitTemplateInclude<ExtArgs> | null;
+    /**
+     * Filter, which HabitTemplate to fetch.
+     */
+    where: Prisma.HabitTemplateWhereUniqueInput;
+};
+/**
+ * HabitTemplate findUniqueOrThrow
+ */
+export type HabitTemplateFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HabitTemplate
+     */
+    select?: Prisma.HabitTemplateSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the HabitTemplate
+     */
+    omit?: Prisma.HabitTemplateOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.HabitTemplateInclude<ExtArgs> | null;
+    /**
+     * Filter, which HabitTemplate to fetch.
+     */
+    where: Prisma.HabitTemplateWhereUniqueInput;
+};
+/**
+ * HabitTemplate findFirst
+ */
+export type HabitTemplateFindFirstArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HabitTemplate
+     */
+    select?: Prisma.HabitTemplateSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the HabitTemplate
+     */
+    omit?: Prisma.HabitTemplateOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.HabitTemplateInclude<ExtArgs> | null;
+    /**
+     * Filter, which HabitTemplate to fetch.
+     */
+    where?: Prisma.HabitTemplateWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of HabitTemplates to fetch.
+     */
+    orderBy?: Prisma.HabitTemplateOrderByWithRelationInput | Prisma.HabitTemplateOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for searching for HabitTemplates.
+     */
+    cursor?: Prisma.HabitTemplateWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` HabitTemplates from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` HabitTemplates.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     *
+     * Filter by unique combinations of HabitTemplates.
+     */
+    distinct?: Prisma.HabitTemplateScalarFieldEnum | Prisma.HabitTemplateScalarFieldEnum[];
+};
+/**
+ * HabitTemplate findFirstOrThrow
+ */
+export type HabitTemplateFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HabitTemplate
+     */
+    select?: Prisma.HabitTemplateSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the HabitTemplate
+     */
+    omit?: Prisma.HabitTemplateOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.HabitTemplateInclude<ExtArgs> | null;
+    /**
+     * Filter, which HabitTemplate to fetch.
+     */
+    where?: Prisma.HabitTemplateWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of HabitTemplates to fetch.
+     */
+    orderBy?: Prisma.HabitTemplateOrderByWithRelationInput | Prisma.HabitTemplateOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for searching for HabitTemplates.
+     */
+    cursor?: Prisma.HabitTemplateWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` HabitTemplates from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` HabitTemplates.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     *
+     * Filter by unique combinations of HabitTemplates.
+     */
+    distinct?: Prisma.HabitTemplateScalarFieldEnum | Prisma.HabitTemplateScalarFieldEnum[];
+};
+/**
+ * HabitTemplate findMany
+ */
+export type HabitTemplateFindManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HabitTemplate
+     */
+    select?: Prisma.HabitTemplateSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the HabitTemplate
+     */
+    omit?: Prisma.HabitTemplateOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.HabitTemplateInclude<ExtArgs> | null;
+    /**
+     * Filter, which HabitTemplates to fetch.
+     */
+    where?: Prisma.HabitTemplateWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of HabitTemplates to fetch.
+     */
+    orderBy?: Prisma.HabitTemplateOrderByWithRelationInput | Prisma.HabitTemplateOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for listing HabitTemplates.
+     */
+    cursor?: Prisma.HabitTemplateWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` HabitTemplates from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` HabitTemplates.
+     */
+    skip?: number;
+    distinct?: Prisma.HabitTemplateScalarFieldEnum | Prisma.HabitTemplateScalarFieldEnum[];
+};
+/**
+ * HabitTemplate create
+ */
+export type HabitTemplateCreateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HabitTemplate
+     */
+    select?: Prisma.HabitTemplateSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the HabitTemplate
+     */
+    omit?: Prisma.HabitTemplateOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.HabitTemplateInclude<ExtArgs> | null;
+    /**
+     * The data needed to create a HabitTemplate.
+     */
+    data: Prisma.XOR<Prisma.HabitTemplateCreateInput, Prisma.HabitTemplateUncheckedCreateInput>;
+};
+/**
+ * HabitTemplate createMany
+ */
+export type HabitTemplateCreateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many HabitTemplates.
+     */
+    data: Prisma.HabitTemplateCreateManyInput | Prisma.HabitTemplateCreateManyInput[];
+};
+/**
+ * HabitTemplate createManyAndReturn
+ */
+export type HabitTemplateCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HabitTemplate
+     */
+    select?: Prisma.HabitTemplateSelectCreateManyAndReturn<ExtArgs> | null;
+    /**
+     * Omit specific fields from the HabitTemplate
+     */
+    omit?: Prisma.HabitTemplateOmit<ExtArgs> | null;
+    /**
+     * The data used to create many HabitTemplates.
+     */
+    data: Prisma.HabitTemplateCreateManyInput | Prisma.HabitTemplateCreateManyInput[];
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.HabitTemplateIncludeCreateManyAndReturn<ExtArgs> | null;
+};
+/**
+ * HabitTemplate update
+ */
+export type HabitTemplateUpdateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HabitTemplate
+     */
+    select?: Prisma.HabitTemplateSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the HabitTemplate
+     */
+    omit?: Prisma.HabitTemplateOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.HabitTemplateInclude<ExtArgs> | null;
+    /**
+     * The data needed to update a HabitTemplate.
+     */
+    data: Prisma.XOR<Prisma.HabitTemplateUpdateInput, Prisma.HabitTemplateUncheckedUpdateInput>;
+    /**
+     * Choose, which HabitTemplate to update.
+     */
+    where: Prisma.HabitTemplateWhereUniqueInput;
+};
+/**
+ * HabitTemplate updateMany
+ */
+export type HabitTemplateUpdateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * The data used to update HabitTemplates.
+     */
+    data: Prisma.XOR<Prisma.HabitTemplateUpdateManyMutationInput, Prisma.HabitTemplateUncheckedUpdateManyInput>;
+    /**
+     * Filter which HabitTemplates to update
+     */
+    where?: Prisma.HabitTemplateWhereInput;
+    /**
+     * Limit how many HabitTemplates to update.
+     */
+    limit?: number;
+};
+/**
+ * HabitTemplate updateManyAndReturn
+ */
+export type HabitTemplateUpdateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HabitTemplate
+     */
+    select?: Prisma.HabitTemplateSelectUpdateManyAndReturn<ExtArgs> | null;
+    /**
+     * Omit specific fields from the HabitTemplate
+     */
+    omit?: Prisma.HabitTemplateOmit<ExtArgs> | null;
+    /**
+     * The data used to update HabitTemplates.
+     */
+    data: Prisma.XOR<Prisma.HabitTemplateUpdateManyMutationInput, Prisma.HabitTemplateUncheckedUpdateManyInput>;
+    /**
+     * Filter which HabitTemplates to update
+     */
+    where?: Prisma.HabitTemplateWhereInput;
+    /**
+     * Limit how many HabitTemplates to update.
+     */
+    limit?: number;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.HabitTemplateIncludeUpdateManyAndReturn<ExtArgs> | null;
+};
+/**
+ * HabitTemplate upsert
+ */
+export type HabitTemplateUpsertArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HabitTemplate
+     */
+    select?: Prisma.HabitTemplateSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the HabitTemplate
+     */
+    omit?: Prisma.HabitTemplateOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.HabitTemplateInclude<ExtArgs> | null;
+    /**
+     * The filter to search for the HabitTemplate to update in case it exists.
+     */
+    where: Prisma.HabitTemplateWhereUniqueInput;
+    /**
+     * In case the HabitTemplate found by the `where` argument doesn't exist, create a new HabitTemplate with this data.
+     */
+    create: Prisma.XOR<Prisma.HabitTemplateCreateInput, Prisma.HabitTemplateUncheckedCreateInput>;
+    /**
+     * In case the HabitTemplate was found with the provided `where` argument, update it with this data.
+     */
+    update: Prisma.XOR<Prisma.HabitTemplateUpdateInput, Prisma.HabitTemplateUncheckedUpdateInput>;
+};
+/**
+ * HabitTemplate delete
+ */
+export type HabitTemplateDeleteArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HabitTemplate
+     */
+    select?: Prisma.HabitTemplateSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the HabitTemplate
+     */
+    omit?: Prisma.HabitTemplateOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.HabitTemplateInclude<ExtArgs> | null;
+    /**
+     * Filter which HabitTemplate to delete.
+     */
+    where: Prisma.HabitTemplateWhereUniqueInput;
+};
+/**
+ * HabitTemplate deleteMany
+ */
+export type HabitTemplateDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Filter which HabitTemplates to delete
+     */
+    where?: Prisma.HabitTemplateWhereInput;
+    /**
+     * Limit how many HabitTemplates to delete.
+     */
+    limit?: number;
+};
+/**
+ * HabitTemplate without action
+ */
+export type HabitTemplateDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HabitTemplate
+     */
+    select?: Prisma.HabitTemplateSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the HabitTemplate
+     */
+    omit?: Prisma.HabitTemplateOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.HabitTemplateInclude<ExtArgs> | null;
+};
+export {};
+//# sourceMappingURL=HabitTemplate.d.ts.map

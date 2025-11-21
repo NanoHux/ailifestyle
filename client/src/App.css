@@ -1,0 +1,439 @@
+/* Global/Shared Styles */
+.page-container {
+  padding: 20px;
+  padding-bottom: 100px;
+  min-height: 100vh;
+}
+
+.page-header {
+  margin-bottom: 20px;
+}
+
+.text-gradient {
+  background: linear-gradient(to right, #fff, #a5a5a5);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+.page-title {
+  margin: 0;
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.page-subtitle {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 1.1rem;
+  margin-top: 5px;
+}
+
+.text-secondary {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.text-muted {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Components/Layout.tsx */
+.layout-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.layout-content {
+  flex: 1;
+  overflow: auto;
+  position: relative;
+  padding-bottom: 90px;
+}
+
+.layout-tabbar {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding-bottom: env(safe-area-inset-bottom);
+  z-index: 1000;
+}
+
+/* Components/TimeBlockCard.tsx */
+.time-block-card {
+  margin-bottom: 16px;
+  border-left-width: 4px;
+  border-left-style: solid;
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+.time-block-card.done {
+  opacity: 0.7;
+}
+
+.time-block-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.time-block-title {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.time-block-title.done {
+  text-decoration: line-through;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.time-block-tag {
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 2px 8px;
+}
+
+.time-block-time {
+  margin-bottom: 12px;
+  color: rgba(255, 255, 255, 0.6);
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+}
+
+.time-block-description {
+  margin-bottom: 12px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.time-block-notes {
+  margin-bottom: 12px;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.9rem;
+}
+
+.time-block-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.action-btn {
+  border-radius: 8px !important;
+}
+
+.action-btn-done {
+  background-color: rgba(0, 181, 120, 0.2) !important;
+  color: #00b578 !important;
+  border: 1px solid rgba(0, 181, 120, 0.5) !important;
+}
+
+.action-btn-skip {
+  background-color: rgba(255, 143, 0, 0.2) !important;
+  color: #ff8f00 !important;
+  border: 1px solid rgba(255, 143, 0, 0.5) !important;
+}
+
+.action-btn-postpone {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  color: #fff !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Pages/Chat.tsx */
+.chat-page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.chat-header {
+  padding: 20px 20px 0 20px;
+}
+
+.chat-header h1 {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.chat-messages-area {
+  flex: 1;
+  overflow: auto;
+  padding: 20px;
+  padding-bottom: 40px;
+}
+
+.message-row {
+  display: flex;
+  margin-bottom: 15px;
+}
+
+.message-bubble {
+  max-width: 80%;
+  padding: 12px 18px;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #fff;
+  white-space: pre-wrap;
+}
+
+.message-bubble.user {
+  border-radius: 20px 20px 4px 20px;
+  background: linear-gradient(135deg, #6C5DD3 0%, #8B7EF8 100%);
+  box-shadow: 0 4px 15px rgba(108, 93, 211, 0.3);
+  border: none;
+}
+
+.message-bubble.ai {
+  border-radius: 20px 20px 20px 4px;
+  background: rgba(40, 44, 52, 0.8);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.chat-input-container {
+  padding: 15px 16px;
+  display: flex;
+  gap: 10px;
+  position: sticky;
+  backdrop-filter: blur(12px);
+  align-items: center;
+}
+
+.chat-input {
+  flex: 1;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 24px;
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+}
+
+.chat-send-btn {
+  width: 44px !important;
+  height: 44px !important;
+  padding: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* Pages/Login.tsx */
+.login-container {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.login-card {
+  padding: 40px;
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  backdrop-filter: blur(20px);
+}
+
+.login-title {
+  margin-bottom: 10px;
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.login-subtitle {
+  margin-bottom: 40px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1.1rem;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 30px;
+}
+
+.custom-input {
+  --color: #fff;
+  --placeholder-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 10px 12px;
+  color: #fff;
+}
+
+.primary-gradient-btn {
+  font-size: 1.2rem !important;
+  border-radius: 12px !important;
+  background: linear-gradient(135deg, #6C5DD3 0%, #8B7EF8 100%) !important;
+  border: none !important;
+}
+
+/* Pages/Today.tsx */
+.today-empty-state {
+  padding: 20px;
+  text-align: center;
+  margin-top: 100px;
+}
+
+.daily-goal-card {
+  margin-bottom: 20px;
+  padding: 20px;
+  border-left: 4px solid #6C5DD3;
+}
+
+.daily-goal-label {
+  color: #6C5DD3;
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.daily-advice {
+  margin-bottom: 30px;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.7);
+  padding-left: 15px;
+  border-left: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.fab-container {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  z-index: 100;
+}
+
+.fab-button {
+  box-shadow: 0 0 20px rgba(108, 93, 211, 0.5) !important;
+  width: 60px !important;
+  height: 60px !important;
+  border-radius: 30px !important;
+  background: linear-gradient(135deg, #6C5DD3 0%, #8B7EF8 100%) !important;
+  border: none !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 1.5rem !important;
+}
+
+/* Pages/History.tsx */
+.history-empty {
+  padding: 40px 0;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.history-card {
+  color: #fff;
+  border-left: 4px solid #6C5DD3;
+}
+
+.history-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.history-card-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.history-card-preview {
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.history-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.history-card-date {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.9rem;
+}
+
+/* Pages/Reflection.tsx */
+.reflection-summary {
+  padding: 20px;
+  padding-top: 40px;
+}
+
+.reflection-summary-card {
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+.reflection-summary-title {
+  color: #6C5DD3;
+  margin-bottom: 15px;
+}
+
+.reflection-summary-text {
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.form-card {
+  padding: 20px;
+}
+
+.custom-form {
+  --border-top: none;
+  --border-bottom: none;
+}
+
+.submit-btn {
+  border-radius: 12px !important;
+  background: linear-gradient(135deg, #6C5DD3 0%, #8B7EF8 100%) !important;
+  border: none !important;
+  margin-top: 20px !important;
+}
+
+/* Pages/Settings.tsx */
+.logout-btn {
+  border-radius: 12px !important;
+  background-color: rgba(255, 49, 65, 0.1) !important;
+  color: #ff3141 !important;
+  border: 1px solid rgba(255, 49, 65, 0.2) !important;
+}
+
+.custom-selector {
+  --color: #fff;
+  --checked-color: #6C5DD3;
+  --border-radius: 8px;
+}

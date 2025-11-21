@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --adm-color-primary: #6C5DD3;
+  --adm-font-family: 'Outfit', sans-serif;
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --neon-glow: 0 0 20px rgba(108, 93, 211, 0.5);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Outfit', sans-serif;
+  background-color: #111419;
+  color: #fff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(108, 93, 211, 0.15) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(255, 117, 195, 0.15) 0%, transparent 40%);
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Glassmorphism Utilities */
+.glass-card {
+  background: rgba(30, 30, 40, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+}
+
+.glass-nav {
+  background: rgba(17, 20, 25, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Ant Design Mobile Overrides for Dark Mode */
+.adm-button-primary {
+  background: linear-gradient(135deg, #6C5DD3 0%, #8B7EF8 100%) !important;
+  border: none !important;
+  box-shadow: 0 4px 15px rgba(108, 93, 211, 0.4) !important;
+  font-weight: 600 !important;
+}
+
+.adm-card {
+  background: transparent !important;
+}
+
+.adm-tab-bar {
+  background: transparent !important;
+  border-top: none !important;
+}
+
+.adm-tab-bar-item-active {
+  color: #6C5DD3 !important;
+}
+
+.adm-input-element {
+  color: #fff !important;
+}
+
+.adm-list-item {
+  background: transparent !important;
+  color: #fff !important;
+}
+
+.adm-list-item-content-main {
+  color: #fff !important;
+}
+
+/* Dark overrides for settings forms */
+.adm-list,
+.adm-list-body,
+.adm-form {
+  background: transparent !important;
+}
+
+.adm-selector-item {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+  color: #fff !important;
+}
+
+.adm-selector-item-active {
+  background: linear-gradient(135deg, #6C5DD3 0%, #8B7EF8 100%) !important;
+  border-color: transparent !important;
+  color: #fff !important;
+}
+
+/* Animations */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.floating {
+  animation: float 6s ease-in-out infinite;
+}
