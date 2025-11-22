@@ -5,7 +5,7 @@ import type { AuthState, User } from '../types';
 export const useAuthStore = create<AuthState>((set) => ({
   user: null,
   token: localStorage.getItem('token'),
-  isAuthenticated: !!localStorage.getItem('token'),
+  isAuthenticated: false,
 
   login: async (email: string, password: string) => {
     try {

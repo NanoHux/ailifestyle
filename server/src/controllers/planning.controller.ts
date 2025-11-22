@@ -6,12 +6,13 @@ export class PlanningController {
     if (!req.user) return res.status(401).json({ error: 'Unauthorized' });
     
     try {
-      const { date } = req.query;
+      const { date, includeArchived } = req.query;
       if (!date || typeof date !== 'string') {
           return res.status(400).json({ error: 'Date query parameter is required (YYYY-MM-DD)' });
       }
 
-      const plan = await planningService.getDayPlan(req.user.id, date);
+      const includeArchivedBool = includeArchived === 'true' || includeArchived === true;
+      const plan = await planningService.getDayPlan(req.user.id, date, includeArchivedBool);
       res.json(plan);
     } catch (error) {
       console.error(error);

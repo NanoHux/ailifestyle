@@ -69,18 +69,13 @@ export class ChatService {
 
     const chatHistory = history.reverse().map((m: any) => ({ role: m.role, content: m.content }));
 
-    // 3. Check intent (Simple Heuristic or AI determined)
-    const lower = content.toLowerCase();
-    const isPlanningRequest = lower.includes('plan') ||
-                              lower.includes('schedule') ||
-                              lower.includes('arrange') ||
-                              lower.includes('todo') ||
-                              lower.includes('task') ||
-                              lower.includes('安排') ||
-                              lower.includes('计划') ||
-                              lower.includes('日程') ||
-                              lower.includes('行程');
-    
+    // 3. Let AI classify the intent (plan / chat / summary)
+    console.log(`[ChatService] Message received: "${content}"`);
+    const intentResult = await aiClient.determineIntent(chatHistory);
+    console.log(
+      `[ChatService] Intent detected: ${intentResult.intent} (confidence: ${intentResult.confidence}) reason: ${intentResult.reason}`
+    );
+
     let aiResponseText = '';
     let hasPlanUpdate = false;
 
@@ -90,7 +85,8 @@ export class ChatService {
     const todayDate = new Date().toLocaleDateString('en-CA', { timeZone: timezone });
     const todayPlan = await planningService.getDayPlan(userId, todayDate);
 
-    if (isPlanningRequest || !todayPlan) {
+    const shouldPlan = intentResult.intent === 'plan' || !todayPlan;
+    if (shouldPlan) {
       // Trigger Planning Flow
       const planResult = await planningService.generateOrUpdateDayPlan(userId, todayDate, content);
       
@@ -98,7 +94,8 @@ export class ChatService {
       hasPlanUpdate = true;
     } else {
       // Normal Chat Flow
-      aiResponseText = await aiClient.generateChatResponse(chatHistory);
+      const mode = intentResult.intent === 'summary' ? 'summary' : 'chat';
+      aiResponseText = await aiClient.generateChatResponse(chatHistory, mode);
     }
 
     // 4. Save AI Response

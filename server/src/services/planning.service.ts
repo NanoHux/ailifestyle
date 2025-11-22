@@ -51,11 +51,13 @@ export class PlanningService {
           }
       });
 
-      // Delete existing blocks for this day (Simpler for MVP than smart diffing)
-      // In a real app, we might want to keep "done" blocks or ask the user
-      await prisma.planBlock.deleteMany({
-          where: { dayPlanId: dayPlan.id }
-      });
+      // Archive existing blocks instead of deleting to preserve history.
+      if (existingPlan) {
+        await prisma.planBlock.updateMany({
+          where: { dayPlanId: dayPlan.id },
+          data: { status: 'archived', updatedAt: new Date() }
+        });
+      }
 
       // Create new blocks
       for (const block of aiResponse.blocks) {
@@ -80,7 +82,12 @@ export class PlanningService {
 
       return {
           ...dayPlan,
-          blocks: await prisma.planBlock.findMany({ where: { dayPlanId: dayPlan.id } })
+          blocks: await prisma.planBlock.findMany({
+            where: {
+              dayPlanId: dayPlan.id,
+              status: { not: 'archived' }
+            }
+          })
       };
   }
 
@@ -92,7 +99,7 @@ export class PlanningService {
       return new Date(`${dateStr}T00:00:00.000Z`);
   }
   
-  async getDayPlan(userId: number, date: string) {
+  async getDayPlan(userId: number, date: string, includeArchived = false) {
       // Ensure date is strictly the date part, but Prisma DateTime is usually full timestamp
       // For this app, we assume planDate is stored as YYYY-MM-DDT00:00:00.000Z usually, 
       // but let's be careful. In schema it is DateTime.
@@ -105,6 +112,7 @@ export class PlanningService {
           where: { userId_planDate: { userId, planDate } },
           include: {
               blocks: {
+                  where: includeArchived ? undefined : { status: { not: 'archived' } },
                   orderBy: { startTime: 'asc' }
               }
           }

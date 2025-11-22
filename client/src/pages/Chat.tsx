@@ -13,6 +13,7 @@ export const ChatPage: React.FC = () => {
     const [sessionId, setSessionId] = useState<number | null>(null);
     const [loading, setLoading] = useState(false);
     const messagesEndRef = useRef<HTMLDivElement>(null);
+    const isNewDaySessionRef = useRef(false);
     const queryClient = useQueryClient();
     const [searchParams] = useSearchParams();
     const preferredSessionId = useMemo(() => {
@@ -26,10 +27,53 @@ export const ChatPage: React.FC = () => {
         const initSession = async () => {
             try {
                 const sessions: ChatSession[] = await chatApi.getSessions();
+                
+                // If user specified a session via URL, always load that one
+                if (preferredSessionId) {
+                    const target = sessions?.find((s) => s.id === preferredSessionId);
+                    if (target) {
+                        setSessionId(target.id);
+                        return;
+                    }
+                }
+
+                // Logic for default view (no URL param)
                 if (sessions && sessions.length > 0) {
-                    const target = preferredSessionId ? sessions.find((s) => s.id === preferredSessionId) : null;
-                    setSessionId(target ? target.id : sessions[0].id);
+                    // Find the most recent session
+                    // Assuming sessions might not be sorted, let's sort them descending by updatedAt
+                    const sortedSessions = [...sessions].sort((a, b) =>
+                        new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime()
+                    );
+                    
+                    const latestSession = sortedSessions[0];
+                    const lastUpdateDate = new Date(latestSession.updatedAt);
+                    const today = new Date();
+                    
+                    const isSameDay = lastUpdateDate.getFullYear() === today.getFullYear() &&
+                                    lastUpdateDate.getMonth() === today.getMonth() &&
+                                    lastUpdateDate.getDate() === today.getDate();
+
+                    if (isSameDay) {
+                        // It's today's session, resume it
+                        setSessionId(latestSession.id);
+                    } else {
+                        // It's an old session, start a fresh one for today
+                        const newSession = await chatApi.createSession();
+                        setSessionId(newSession.id);
+                        
+                        // Add greeting message for the new day
+                        setMessages([{
+                            id: Date.now(),
+                            role: 'assistant',
+                            content: '新的一天开始了，今天有什么要做的吗？',
+                            hasPlanUpdate: false,
+                            createdAt: new Date().toISOString()
+                        }]);
+                        // Return early to prevent loading messages effect from overriding this
+                        return;
+                    }
                 } else {
+                    // No sessions at all, create first one
                     const newSession = await chatApi.createSession();
                     setSessionId(newSession.id);
                 }
@@ -44,6 +88,14 @@ export const ChatPage: React.FC = () => {
     // Load messages when session ID changes
     useEffect(() => {
         if (sessionId) {
+            if (isNewDaySessionRef.current) {
+                // Reset flag so subsequent updates (e.g. sending message) work normally if needed,
+                // though usually this effect only runs on ID change.
+                // We just skip fetching because we already set the greeting manually.
+                isNewDaySessionRef.current = false;
+                return;
+            }
+
             const loadMessages = async () => {
                 try {
                     const msgs = await chatApi.getMessages(sessionId);
@@ -103,10 +155,12 @@ export const ChatPage: React.FC = () => {
         }
     };
 
-    const bottomOffset = 82;
+    // 底部导航栏的高度约为 50px，输入框需要位于导航栏上方
+    const bottomOffset = 50;
 
     return (
-        <div className="chat-page-container" style={{ paddingBottom: `${bottomOffset + 40}px` }}>
+        // 增加底部内边距，防止内容被固定的输入框遮挡
+        <div className="chat-page-container" style={{ paddingBottom: `${bottomOffset + 80}px` }}>
             <div className="chat-header">
                 <h1 className="text-gradient page-title">Chat</h1>
             </div>

@@ -96,7 +96,7 @@ export const TodayPage: React.FC = () => {
           className="glass-card daily-goal-card"
         >
           <strong className="daily-goal-label">Daily Goal</strong>
-          <span style={{ fontSize: '1.1rem' }}>{typedDayPlan.dayGoal}</span>
+          <span style={{ fontSize: '1.1rem',color: '#ffffffff' }}>{typedDayPlan.dayGoal}</span>
         </motion.div>
       )}
 

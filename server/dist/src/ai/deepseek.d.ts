@@ -75,9 +75,9 @@ export declare const ReflectionResponseSchema: z.ZodObject<{
 export type DayPlanResponse = z.infer<typeof DayPlanResponseSchema>;
 export type ReflectionResponse = z.infer<typeof ReflectionResponseSchema>;
 export declare class DeepSeekClient {
-    private apiKey;
     private baseUrl;
     constructor();
+    private get apiKey();
     private callChatCompletion;
     generateDayPlan(userContext: string, date: string, preferences: any, userInput: string): Promise<DayPlanResponse>;
     generateChatResponse(history: {

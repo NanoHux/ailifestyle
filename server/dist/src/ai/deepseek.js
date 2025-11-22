@@ -25,34 +25,47 @@ exports.ReflectionResponseSchema = zod_1.z.object({
 });
 class DeepSeekClient {
     constructor() {
-        this.apiKey = process.env.DEEPSEEK_API_KEY || '';
         this.baseUrl = 'https://api.deepseek.com';
     }
+    get apiKey() {
+        return process.env.DEEPSEEK_API_KEY || '';
+    }
     async callChatCompletion(messages, responseFormat) {
+        console.log('[DeepSeek] callChatCompletion started');
         if (!this.apiKey) {
+            console.error('[DeepSeek] DEEPSEEK_API_KEY is not set');
             throw new Error('DEEPSEEK_API_KEY is not set');
         }
-        const response = await fetch(`${this.baseUrl}/chat/completions`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${this.apiKey}`,
-            },
-            body: JSON.stringify({
-                model: 'deepseek-chat',
-                messages,
-                temperature: 0.7,
-                response_format: { type: 'json_object' }, // DeepSeek supports JSON mode
-                max_tokens: 2000
-            }),
-        });
-        if (!response.ok) {
-            const errorText = await response.text();
-            throw new Error(`DeepSeek API Error: ${response.status} ${response.statusText} - ${errorText}`);
+        console.log('[DeepSeek] Sending request to:', `${this.baseUrl}/chat/completions`);
+        try {
+            const response = await fetch(`${this.baseUrl}/chat/completions`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${this.apiKey}`,
+                },
+                body: JSON.stringify({
+                    model: 'deepseek-chat',
+                    messages,
+                    temperature: 0.7,
+                    response_format: { type: 'json_object' }, // DeepSeek supports JSON mode
+                    max_tokens: 2000
+                }),
+            });
+            if (!response.ok) {
+                const errorText = await response.text();
+                console.error(`[DeepSeek] API Error: ${response.status} ${response.statusText} - ${errorText}`);
+                throw new Error(`DeepSeek API Error: ${response.status} ${response.statusText} - ${errorText}`);
+            }
+            const data = await response.json();
+            console.log('[DeepSeek] Response received, choices:', data.choices?.length);
+            const content = data.choices[0].message.content;
+            return content;
         }
-        const data = await response.json();
-        const content = data.choices[0].message.content;
-        return content;
+        catch (error) {
+            console.error('[DeepSeek] Fetch error:', error);
+            throw error;
+        }
     }
     async generateDayPlan(userContext, date, preferences, userInput) {
         const prompt = `
@@ -87,6 +100,8 @@ class DeepSeekClient {
         ]);
         try {
             const cleanContent = content.replace(/```json\n?|```/g, '').trim();
+            console.log("[DeepSeek] Raw content:", content);
+            console.log("[DeepSeek] Cleaned content:", cleanContent);
             const json = JSON.parse(cleanContent);
             // Validate with Zod
             return exports.DayPlanResponseSchema.parse(json);

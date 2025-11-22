@@ -98,17 +98,6 @@ export const TimeBlockCard: React.FC<TimeBlockCardProps> = ({ block, onUpdate })
                 <CloseCircleOutline style={{ marginRight: '4px' }} /> Skip
             </Button>
             )}
-
-            {/* Postpone Logic can be more complex, simple version for now */}
-            {block.status !== 'done' && (
-                <Button
-                size='mini'
-                onClick={() => { Toast.show('Postpone feature coming soon'); }}
-                className="action-btn action-btn-postpone"
-            >
-                Postpone
-            </Button>
-            )}
         </div>
         </Card>
     </motion.div>
